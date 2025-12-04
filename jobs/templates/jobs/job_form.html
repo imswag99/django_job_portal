@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Post Job
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-bg text-text-primary py-12">
+
+    <div class="max-w-2xl mx-auto bg-surface border border-border p-8 rounded-xl shadow-sm">
+        <h1 class="text-2xl font-bold text-primary mb-6">{{ title }}</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Title -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Title</label>
+                {% render_field form.title class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.title.errors }}</p>
+            </div>
+
+            <!-- Company name -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Company name</label>
+                {% render_field form.company_name class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.company_name.errors }}</p>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Location</label>
+                {% render_field form.location class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.location.errors }}</p>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Description</label>
+                {% render_field form.description class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.description.errors }}</p>
+            </div>
+
+            <!-- Requirements -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Requirements</label>
+                {% render_field form.requirements class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.requirements.errors }}</p>
+            </div>
+
+            <!-- Salary Min -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Minimum Salary</label>
+                {% render_field form.salary_min class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.salary_min.errors }}</p>
+            </div>
+
+            <!-- Salary Max -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Maximum Salary</label>
+                {% render_field form.salary_max class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.salary_max.errors }}</p>
+            </div>
+
+            <!-- Job Type -->
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold text-text-primary">Job Type</label>
+                {% render_field form.job_type class="w-full bg-bg border border-border px-4 py-3 rounded-lg text-text-primary focus:ring-2 focus:ring-primary focus:border-primary" %}
+                <p class="text-error text-sm">{{ form.job_type.errors }}</p>
+            </div>
+
+            <!-- Remote -->
+            <div class="mb-6">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    {% render_field form.remote class="accent-primary w-5 h-5 focus:ring-primary focus:ring-2 cursor-pointer" %}
+                    <span class="text-text-primary font-semibold">Remote</span>
+                </label>
+                <p class="text-error text-sm">{{ form.remote.errors }}</p>
+            </div>
+
+            <!-- Is Active -->
+            <div class="mb-6">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    {% render_field form.is_active class="accent-primary w-5 h-5 focus:ring-primary focus:ring-2 cursor-pointer" %}
+                    <span class="text-text-primary font-semibold">Active Listing</span>
+                </label>
+                <p class="text-error text-sm">{{ form.is_active.errors }}</p>
+            </div>
+
+            <button 
+                class="bg-primary text-white px-6 py-2 rounded-lg font-semibold 
+                       hover:bg-primary/90 transition-colors duration-150">
+                Submit
+            </button>
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-bg text-text-primary py-20">
+    <div class="max-w-5xl mx-auto text-center">
+        <h1 class="text-4xl font-bold mb-4 text-primary">About JOBPEDIA</h1>
+        <p class="text-text-secondary text-lg max-w-3xl mx-auto">
+            JOBPEDIA is a modern job marketplace that connects talented applicants with top recruiters.
+            Our mission is to simplify hiring and empower careers using a clean, intuitive, and efficient platform.
+        </p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-16 bg-surface text-text-primary">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6">
+
+        <!-- Mission -->
+        <div class="p-8 rounded-xl border border-border bg-bg shadow-xl">
+            <h2 class="text-2xl font-semibold text-primary mb-4">Our Mission</h2>
+            <p class="text-text-secondary leading-relaxed">
+                To create a seamless and transparent hiring platform that bridges the gap between recruiters
+                searching for talent and applicants aiming for their dream jobs.
+            </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="p-8 rounded-xl border border-border bg-bg shadow-xl">
+            <h2 class="text-2xl font-semibold text-primary mb-4">Our Vision</h2>
+            <p class="text-text-secondary leading-relaxed">
+                We aim to become the most trusted and user-friendly job marketplace by continuously
+                improving the recruitment experience through innovation and technology.
+            </p>
+        </div>
+
+        <!-- Why JOBPEDIA -->
+        <div class="md:col-span-2 p-8 rounded-xl border border-border bg-bg shadow-xl">
+            <h2 class="text-2xl font-semibold text-primary mb-4">Why JOBPEDIA?</h2>
+
+            <ul class="space-y-4 text-text-secondary">
+                <li class="flex items-start gap-3">
+                    <span class="text-accent text-xl">✓</span>
+                    Simple and elegant interface for smooth navigation
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="text-accent text-xl">✓</span>
+                    Accurate job-to-talent matching system
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="text-accent text-xl">✓</span>
+                    Secure and reliable data handling
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="text-accent text-xl">✓</span>
+                    Applicant and recruiter dashboards for seamless management
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

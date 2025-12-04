@@ -1,0 +1,10 @@
+from django.contrib import admin
+from .models import Application
+
+
+@admin.register(Application)
+class ApplicationAdmin(admin.ModelAdmin):
+    list_display = ("id", "job", "applicant", "status", "applied_at")
+    list_filter = ("status", "applied_at", "job")
+    search_fields = ("job__title", "applicant__username")
+    ordering = ("-applied_at",)

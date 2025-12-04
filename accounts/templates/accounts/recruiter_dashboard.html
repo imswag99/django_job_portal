@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recuiter Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-bg text-text-primary py-12">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-primary mb-6">Recruiter Dashboard</h1>
+
+        <div class="flex justify-between items-center mb-8">
+            <a href="{% url 'job_create' %}"
+            class="bg-primary text-white px-6 py-2 rounded-lg inline-block">
+                + Post New Job
+            </a>
+
+            <a href="{% url 'recruiter_applications' %}" 
+                class="bg-primary text-white text-center font-semibold px-4 py-2 rounded-lg">Applications
+            </a>
+        </div>
+
+        <div class="space-y-6">
+            {% for job in jobs %}
+            <div class="bg-surface border border-border p-6 rounded-xl">
+                <h2 class="text-xl font-semibold text-primary">{{ job.title }}</h2>
+                <p class="text-text-secondary">{{ job.company }}</p>
+
+                <div class="mt-4 flex gap-4">
+                    <a href="{% url 'job_detail' slug=job.slug %}" class="text-accent">View</a>
+                    <a href="{% url 'job_edit' slug=job.slug %}" class="text-primary">Edit</a>
+                    <a href="{% url 'job_delete' slug=job.slug %}" class="text-error">Delete</a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-text-secondary">You have not posted any jobs yet.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

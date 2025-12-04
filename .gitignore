@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual env (if inside repo)
+venv/
+.venv/
+env/
+
+# Django / local
+*.sqlite3
+db.sqlite3
+resumes/
+/media/
+static/
+.DS_Store
+
+# Environment variables
+.env
+*.env
+
+# PyCharm / VSCode
+.vscode/
+.idea/
+
+# Byte-compiled / caches
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# Node (if using in theme)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Tailwind / compiled css output (if you build locally)
+theme/static/css/dist/

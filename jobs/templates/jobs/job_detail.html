@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Job Details
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-bg text-text-primary py-12">
+
+    <div class="max-w-3xl mx-auto bg-surface p-8 rounded-xl border border-border">
+
+        <h1 class="text-3xl font-bold text-primary mb-2">{{ job.title }}</h1>
+        <p class="text-text-secondary text-lg mb-4">{{ job.company_name }}</p>
+
+        <p class="mb-3"><strong>Location:</strong> {{ job.location }}</p>
+        <p class="mb-3"><strong>Job Type:</strong> {{ job.job_type }}</p>
+
+        {% if job.remote %}
+        <p class="mb-3 text-accent">Remote</p>
+        {% endif %}
+
+        {% if job.salary_min and job.salary_max %}
+        <p class="mb-3"><strong>Salary:</strong> ₹{{ job.salary_min }} - ₹{{ job.salary_max }}</p>
+        {% endif %}
+
+        <hr class="border-border my-6">
+
+        <h2 class="text-xl font-semibold mb-3">Job Description</h2>
+        <p class="leading-relaxed">{{ job.description|linebreaks }}</p>
+
+        <h2 class="text-xl font-semibold my-3">Job Requirements</h2>
+        <p class="leading-relaxed">{{ job.requirements|linebreaks }}</p>
+
+        {% if job.is_active %}
+        <p class="my-3 text-accent">Hiring</p>
+        {% else %}
+        <p class="my-3 text-accent">Inactive</p>
+        {% endif %}
+
+        <div class="mt-8 flex gap-4">
+
+            {% if user.is_authenticated and user.is_applicant %}
+            <a href="{% url 'apply_to_job' slug=job.slug %}" class="bg-primary text-white px-5 py-2 rounded-lg">Apply</a>
+            {% endif %}
+
+            {% if user == job.recruiter %}
+            <a href="{% url 'job_edit' slug=job.slug %}" 
+                class="bg-accent text-black px-4 py-2 rounded-lg">Edit</a>
+
+            <a href="{% url 'job_delete' slug=job.slug %}" 
+                class="bg-error text-white px-4 py-2 rounded-lg">Delete</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

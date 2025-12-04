@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-bg text-text-primary py-12">
+    <div class="max-w-lg mx-auto bg-surface p-8 rounded-xl border border-border">
+
+        <h1 class="text-3xl font-bold mb-6 text-primary">Your Profile</h1>
+
+        <div class="space-y-4">
+            <p><span class="font-semibold text-text-secondary">Username:</span> {{ user.username }}</p>
+            <p><span class="font-semibold text-text-secondary">Email:</span> {{ user.email }}</p>
+
+            <p>
+                <span class="font-semibold text-text-secondary">Account Type:</span>
+                {% if user.is_recruiter %}
+                    Recruiter
+                {% elif user.is_applicant %}
+                    Applicant
+                {% else %}
+                    Admin / Staff
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

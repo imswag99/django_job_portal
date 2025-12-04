@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block content %}
+<div class="flex justify-center items-center min-h-[90vh] bg-bg text-text-primary">
+  <div class="bg-surface border border-border rounded-2xl shadow-lg p-8 w-full max-w-lg">
+
+    <!-- Title -->
+    <h2 class="text-3xl font-bold text-center text-primary mb-6">Welcome Back</h2>
+    <p class="text-center text-text-secondary mb-8">
+      Login to your <span class="text-accent font-semibold">JOBPEDIA</span> account
+    </p>
+
+    <!-- Login Form -->
+    <form method="POST" class="space-y-5">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}" class="block mb-2 text-text-secondary font-medium">
+            {{ field.label }}
+          </label>
+
+          {% render_field field class="w-full p-3 rounded-lg border border-border bg-surface text-text-primary placeholder-text-secondary focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder=field.label %}
+
+          {% if field.errors %}
+            {% for error in field.errors %}
+              <p class="text-sm text-error mt-1">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <p class="text-sm text-error text-center">{{ error }}</p>
+        {% endfor %}
+      {% endif %}
+
+      <button type="submit"
+        class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-200">
+        Login
+      </button>
+    </form>
+
+    <!-- Redirect to Register -->
+    <p class="text-center text-text-secondary mt-6 text-sm">
+      Don’t have an account?
+      <a href="{% url 'register' %}" class="text-accent hover:underline font-medium">Register now</a>.
+    </p>
+
+  </div>
+</div>
+{% endblock %}

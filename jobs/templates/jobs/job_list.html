@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Jobs
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-bg text-text-primary py-10">
+
+    <!-- Page Title -->
+    <h1 class="text-3xl font-bold mb-6 text-primary text-center">Available Jobs</h1>
+
+    <!-- Search Form -->
+    <form method="get" class="max-w-3xl mx-auto mb-10">
+        <div class="flex gap-3">
+            <input 
+                type="text" 
+                name="q" 
+                placeholder="Search by title, company, or skills..."
+                value="{{ request.GET.q }}"
+                class="w-full bg-surface border border-border rounded-lg px-4 py-2 text-text-primary"
+            >
+            <button 
+                class="bg-primary px-6 py-2 rounded-lg text-white font-semibold"
+            >
+                Search
+            </button>
+        </div>
+    </form>
+
+    <!-- Job Cards -->
+    <div class="max-w-4xl mx-auto space-y-6">
+        {% for job in jobs %}
+        <a href="{% url 'job_detail' slug=job.slug %}" 
+           class="block bg-surface p-6 rounded-xl border border-border hover:border-primary hover:shadow-lg transition">
+            <h2 class="text-xl font-semibold text-primary">{{ job.title }}</h2>
+            <p class="text-text-secondary">{{ job.company }}</p>
+            <p class="mt-2 text-sm">{{ job.location }} • {{ job.job_type }}</p>
+            <p class="mt-2 text-sm text-accent">Posted on {{ job.posted_at|date:"M d, Y" }}</p>
+        </a>
+        {% empty %}
+        <p class="text-center text-text-secondary">No jobs found.</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="bg-bg min-h-[85vh] flex items-center relative overflow-hidden">
+
+    <!-- Background gradient glow -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-transparent"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12">
+
+        <!-- Left Text -->
+        <div class="flex flex-col justify-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-text-primary leading-tight mb-6">
+                Find Your <span class="text-primary">Dream Job</span> With Ease.
+            </h1>
+
+            <p class="text-text-secondary text-lg mb-8 leading-relaxed">
+                Explore thousands of verified job listings, apply in one click,
+                and track your applications — all in one seamless platform.
+            </p>
+
+            <div class="flex gap-4">
+                <a href="{% url 'job_list' %}" 
+                   class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/80 transition">
+                    Browse Jobs
+                </a>
+
+                {% if user.is_authenticated and user.is_applicant %}
+                <a href="{% url 'applicant_dashboard' %}" 
+                   class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/20 transition">
+                    Go To Dashboard
+                </a>
+                
+                {% elif user.is_authenticated and user.is_recruiter %}
+                <a href="{% url 'recruiter_dashboard' %}" 
+                   class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/20 transition">
+                    Go To Dashboard
+                </a>
+
+                {% else %}
+                <a href="{% url 'register' %}" 
+                   class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/20 transition">
+                    Create Account
+                </a>
+
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="flex justify-center items-center">
+            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+                 alt="Job Search People"
+                 class="rounded-xl shadow-xl w-full object-cover">
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- FEATURE SECTION -->
+<section class="bg-surface py-20 border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl font-bold text-text-primary mb-10">Why Choose JOBPEDIA?</h2>
+
+        <div class="grid md:grid-cols-3 gap-10">
+
+            <div class="p-6 bg-bg border border-border rounded-xl">
+                <h3 class="text-xl font-semibold text-primary mb-3">Verified Companies</h3>
+                <p class="text-text-secondary">Every recruiter is manually screened to ensure quality and authenticity.</p>
+            </div>
+
+            <div class="p-6 bg-bg border border-border rounded-xl">
+                <h3 class="text-xl font-semibold text-primary mb-3">Easy Applications</h3>
+                <p class="text-text-secondary">Apply to job postings with your uploaded resume in a single click.</p>
+            </div>
+
+            <div class="p-6 bg-bg border border-border rounded-xl">
+                <h3 class="text-xl font-semibold text-primary mb-3">Real-Time Tracking</h3>
+                <p class="text-text-secondary">Track application status — pending, reviewed, accepted, or rejected.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- JOB CATEGORIES -->
+<section class="py-20 bg-bg">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        
+        <h2 class="text-3xl font-bold text-text-primary mb-8">Popular Categories</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+            <div class="bg-surface border border-border p-5 rounded-lg hover:border-primary transition">
+                <p class="text-text-primary font-medium">Software & IT</p>
+            </div>
+
+            <div class="bg-surface border border-border p-5 rounded-lg hover:border-primary transition">
+                <p class="text-text-primary font-medium">Finance</p>
+            </div>
+
+            <div class="bg-surface border border-border p-5 rounded-lg hover:border-primary transition">
+                <p class="text-text-primary font-medium">Healthcare</p>
+            </div>
+
+            <div class="bg-surface border border-border p-5 rounded-lg hover:border-primary transition">
+                <p class="text-text-primary font-medium">Marketing</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- TESTIMONIALS PLACEHOLDER -->
+{% comment %} <section class="py-20 bg-surface border-t border-border">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl font-bold text-text-primary mb-10">What People Say</h2>
+
+        <p class="text-text-secondary">
+            Testimonials or user reviews can go here later.
+        </p>
+
+    </div>
+</section> {% endcomment %}
+
+
+{% endblock %}
