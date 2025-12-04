@@ -132,7 +132,7 @@ INTERNAL_IPS = ['127.0.0.1']
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = BASE_DIR / "staticfiles" 
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
